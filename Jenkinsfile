@@ -4,6 +4,8 @@ pipeline {
     stage('build') {
       steps {
         sh 'echo "Build Step"'
+        sh 'pwd'
+        slackSend channel: '#devops', color: 'good', message: 'เริ่มการ Build แล้วคร้าบบบ', teamDomain: 'alchemist-itbangmod'
       }
     }
     stage('unit-test') {
