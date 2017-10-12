@@ -16,13 +16,13 @@ pipeline {
     stage('zipfile') {
       steps {
         sh 'echo ${JOB_NAME}-${BUILD_NUMBER}'
-        sh 'tar cvzf ${JOB_NAME}-${BUILD_NUMBER}.tar.gz *'
+        sh 'tar cvzf "${JOB_NAME}-${BUILD_NUMBER}.tar.gz" *'
       }
     }
     stage('development') {
       steps {
         sh 'echo "Deploy To Development"'
-        sh 'ssh deployment@helloworld.itbangmod.in.th ls -l /var/www'
+        sh 'scp "${JOB_NAME}-${BUILD_NUMBER}.tar.gz" deployment@helloworld.itbangmod.in.th:~/'
       }
     }
     stage('staging') {
