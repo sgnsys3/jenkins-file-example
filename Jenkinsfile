@@ -15,7 +15,8 @@ pipeline {
     }
     stage('zipfile') {
       steps {
-        archiveArtifacts '*'
+        sh 'echo ${JOB_NAME}-${BUILD_NUMBER}'
+        sh 'tar cvzf ${JOB_NAME}-${BUILD_NUMBER}.tar.gz *'
       }
     }
     stage('development') {
