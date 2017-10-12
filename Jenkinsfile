@@ -17,6 +17,7 @@ pipeline {
     stage('development') {
       steps {
         sh 'echo "Deploy To Development"'
+        sh 'ssh deployment@helloworld.itbangmod.in.th cd /var/www && ls -l'
       }
     }
     stage('staging') {
