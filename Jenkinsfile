@@ -22,7 +22,8 @@ pipeline {
     stage('development') {
       steps {
         sh 'echo "Deploy To Development"'
-        sh 'scp -p "${JOB_NAME}-${BUILD_NUMBER}.tar.gz" deployment@helloworld.itbangmod.in.th:~/"${JOB_NAME}"/"${JOB_NAME}-${BUILD_NUMBER}.tar.gz"'
+        sh 'ssh deployment@helloworld.itbangmod.in.th mkdir ~/"${JOB_NAME}"'
+        sh 'scp "${JOB_NAME}-${BUILD_NUMBER}.tar.gz" deployment@helloworld.itbangmod.in.th:~/"${JOB_NAME}"/"${JOB_NAME}-${BUILD_NUMBER}.tar.gz"'
       }
     }
     stage('staging') {
