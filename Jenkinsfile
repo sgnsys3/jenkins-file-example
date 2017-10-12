@@ -5,6 +5,7 @@ pipeline {
       steps {
         sh 'echo "Build Step"'
         sh 'pwd'
+        sh 'whoami'
         slackSend channel: '#devops', color: 'good', message: 'เริ่มการ Build แล้วคร้าบบบ', teamDomain: 'alchemist-itbangmod'
       }
     }
