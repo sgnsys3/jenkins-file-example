@@ -1,12 +1,13 @@
 pipeline {
   agent any
+
   stages {
     stage('build') {
-      String messageResponse = '[${JOB_NAME}] เริ่มการ Build แล้ว อิอิ จุ๊กกรู๊ - ${BUILD_NUMBER}'
+      String messageResponse = 
       steps {
         sh 'echo "Build Step"'
         sh 'echo wow > index.html'
-        slackSend channel: '#devops', color: 'good', message: messageResponse, teamDomain: 'alchemist-itbangmod'
+        slackSend channel: '#devops', color: 'good', message: "[${JOB_NAME}] เริ่มการ Build แล้ว อิอิ จุ๊กกรู๊ - ${BUILD_NUMBER}", teamDomain: 'alchemist-itbangmod'
       }
     }
     stage('unit-test') {
