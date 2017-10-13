@@ -5,7 +5,8 @@ pipeline {
       steps {
         sh 'echo "Build Step"'
         sh 'echo wow > index.html'
-        slackSend channel: '#devops', color: 'good', message: 'เริ่มการ Build แล้วคร้าบบบ', teamDomain: 'alchemist-itbangmod'
+        def messageRecovery = '[${JOB_NAME}] เริ่มการ Build แล้ว อิอิ จุ๊กกรู๊ - ${BUILD_NUMBER}'
+        slackSend channel: '#devops', color: 'good', message: messageRecovery, teamDomain: 'alchemist-itbangmod'
       }
     }
     stage('unit-test') {
