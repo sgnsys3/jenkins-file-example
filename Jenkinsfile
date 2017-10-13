@@ -1,9 +1,7 @@
 pipeline {
   agent any
-
   stages {
     stage('build') {
-      String messageResponse = 
       steps {
         sh 'echo "Build Step"'
         sh 'echo wow > index.html'
