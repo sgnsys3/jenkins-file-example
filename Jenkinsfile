@@ -27,7 +27,9 @@ pipeline {
     }
     stage('staging') {
       steps {
-        sh 'echo "Deploy To Stagging"'
+        timeout(time: 1, unit: 'HOURS') {
+          input 'Deploy to Production?'
+        }
       }
     }
     stage('production') {
