@@ -43,7 +43,7 @@ pipeline {
       echo 'This job was ended'
     }
     success {
-      echo 'Success XD'
+      slackSend channel: '#devops', color: 'good', message: "[${JOB_NAME}] Build เสร็จแล้ว - ${BUILD_NUMBER} พร้อมกับ Deploy", teamDomain: 'alchemist-itbangmod'
     }
     failure {
       echo 'Failure :('
